@@ -1,4 +1,4 @@
-import {getHeros, getHero, updatHero, deleteHero, setHero} from "./service.js";
+import {getHeros, getHero, updatHero, deleteHero, setHero} from "./js/service.js";
 
 const form = document.getElementById("crud-form");
 const title = document.getElementById("crud-title");
@@ -42,15 +42,14 @@ document.addEventListener("click", (event) =>{
         form.isAlive.value = event.target.dataset.isAlive;
         form.id.value = event.target.dataset.id;
 
-        console.log(event.target.dataset.id)
     }
-
+    console.log(event.target)
     if(event.target.matches("#delete")) {
         let isDelete = confirm(`¿Desea eliminar el heroe: ${event.target.dataset.alias}`);
-        
+        ;
         if(isDelete){
             try {
-                deleteHero(event.target.value)
+                deleteHero(event.target.dataset.value)
             } catch (error) {
                 let message = error.statusText || "Ocurrió un error al cargar";
                 alert(`Error${error.status}: ${message}`);

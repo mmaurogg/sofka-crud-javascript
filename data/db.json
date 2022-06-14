@@ -5,21 +5,24 @@
       "alias": "Spiderman",
       "name": "Petter Parker",
       "power": "Aracnic powers",
-      "isAlive": true
+      "isAlive": true,
+      "link": "https://cdn-icons.flaticon.com/png/512/1090/premium/1090806.png?token=exp=1655183097~hmac=1af358f52acf68547d51b5a7ee6cabcf"
     },
     {
       "id": 2,
       "alias": "Hulk",
       "name": "Bruce Banner",
       "power": "Hiper Strong",
-      "isAlive": true
+      "isAlive": true,
+      "link": "https://as2.ftcdn.net/v2/jpg/02/66/58/31/1000_F_266583146_oPl3TiJqFRC2i8YHZDII6526sM7jwN9b.jpg"
     },
     {
       "id": 3,
       "alias": "Iron Man",
       "name": "Tony Stark",
       "power": "Money",
-      "isAlive": true
+      "isAlive": true,
+      "link": "https://cdn-icons-png.flaticon.com/512/86/86494.png"
     },
     {
       "alias": "blac panter",

@@ -1,35 +1,37 @@
-const table = document.getElementById("crud-table");
-const template = document.getElementById("crud-template").content;
+const template = document.querySelector("#crud-template").content;
 const fragment = document.createDocumentFragment();
 
-const getHeros = async () => {
-    await fetch("http://localhost:3000/marvel")
+const getHeros = () => {
+    fetch("http://localhost:3000/marvel")
     .then((res) => {
         return (res.ok)?res.json():Promise.reject(res);
     })
-    .then((json) =>{
+    .then((json) => {
+        console.log(json);
 
         json.forEach(element => { 
-
             template.getElementById("alias").textContent = element.alias;
             template.getElementById("name").textContent = element.name;
             template.getElementById("power").textContent = element.power;
-            template.getElementById("isAlive").textContent = "pendiente";
+            //template.getElementById("isAlive").textContent = "pendiente";
+            template.getElementById("link").src = element.link;
+            
             template.getElementById("edit").dataset.alias = element.alias;
             template.getElementById("edit").dataset.name = element.name;
             template.getElementById("edit").dataset.power = element.power;
             template.getElementById("edit").dataset.isAlive = element.isAlive;
             template.getElementById("edit").dataset.id = element.id;
+            template.getElementById("delete").dataset.value = element.id;
 
             let clone = document.importNode(template,true);
-            fragment.appendChild(clone);
+            fragment.append(clone);
         });
 
-        document.getElementById("body-table").appendChild(fragment);
+        document.getElementById("heros").append(fragment);
     })
     .catch((error) => {
         let message = error.statusText || "Ocurrió un error al cargar";
-        table.insertRow("afterend", `<p><b>Error${error.status}:${message}</b></p>`);
+        alert(`Error ${error.status}: ${message}`);
     })
 }
 
@@ -103,8 +105,7 @@ const setHero = async (hero) => {
 
 //UpdatHero
 const updatHero = async (hero) => {
-    event.preventDefault()
-    console.log("Hola mundo");
+
     let options = {
         method: 'PUT',
         headers: {
