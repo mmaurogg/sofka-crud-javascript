@@ -1,0 +1,66 @@
+{
+  "marvel": [
+    {
+      "id": 1,
+      "alias": "Spiderman",
+      "name": "Petter Parker",
+      "power": "Aracnic powers",
+      "isAlive": true
+    },
+    {
+      "id": 2,
+      "alias": "Hulk",
+      "name": "Bruce Banner",
+      "power": "Hiper Strong",
+      "isAlive": true
+    },
+    {
+      "id": 3,
+      "alias": "Iron Man",
+      "name": "Tony Stark",
+      "power": "Money",
+      "isAlive": true
+    },
+    {
+      "alias": "blac panter",
+      "name": "otro nombre",
+      "power": "poderes de pantera",
+      "id": 21
+    },
+    {
+      "alias": "galactus",
+      "name": "galactus",
+      "power": "comer planetas",
+      "id": 22
+    },
+    {
+      "alias": "capitan america",
+      "name": "royer",
+      "power": "suero de supersoldado",
+      "id": 23
+    }
+  ],
+  "DC": [
+    {
+      "id": 1,
+      "alias": "Batman",
+      "name": "Bruce Wayne",
+      "power": "Money",
+      "isAlive": true
+    },
+    {
+      "id": 2,
+      "alias": "Superman",
+      "name": "clark ken",
+      "power": "Hiper Strong",
+      "isAlive": true
+    },
+    {
+      "id": 3,
+      "alias": "Flaz",
+      "name": "Barry Alen",
+      "power": "Speed",
+      "isAlive": true
+    }
+  ]
+}

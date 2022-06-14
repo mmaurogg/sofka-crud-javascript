@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./main.js" type="module"></script>
+</head>
+<body>
+
+    <h1>Crud Heroes</h1>
+    <section class="crud" id="">
+        <article>
+            <h2 id="crud-title">Agregar heroe</h2>
+            <form id="crud-form">
+
+                <input type="text" name="alias" placeholder="Super heroe"><br>
+
+                <input type="text" name="name" placeholder="Nombre" >
+                <br>
+                <input type="text" name="power" placeholder="Super poder" >
+                <br>
+                <br>
+                <label for="isAlive">¿Está vivo?</label> 
+                <input type="checkbox" name="isAlive">
+                <br>
+                <br>
+                <div>
+                    <input type="checkbox" name="marvel">
+                    <label for="marvel">Marvel</label>                    
+                </div>
+                <div>
+                    <input type="checkbox" name="DC">
+                    <label for="DC">DC</label>
+                </div>
+                <br>
+
+                <input type="submit" value="Crear"> 
+                <input type="hidden" name="id">
+            </form>
+        </article>
+        
+        <br>
+
+        <article>
+            <h2>Ver Super Heroes</h2>
+            <table id="crud-table">
+                <thead>
+                    <tr>
+                        <th>Alias</th>
+                        <th>Nombre</th>
+                        <th>Super Poder</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="body-table"></tbody>
+            </table>
+        </article>
+    </section>
+    <template id="crud-template">
+        <tr>
+            <td id="alias"></td>
+            <td id="name"></td>
+            <td id="power"></td>
+            <td id="isAlive"></td>
+            <td>
+                <button id="edit">Editar</button>
+                <button id="delete">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+</body>
+</html>
