@@ -45,7 +45,6 @@ const getHero = async (id)=> {
     })
 }
 
-
 /**
  * Método para borrar la un heroe de la API
  * @param {*} id numero identificador id del heroe buscado
@@ -174,6 +173,7 @@ let buildPage = (heros) => {
         template.getElementById("edit").dataset.isAlive = element.isAlive;
         template.getElementById("edit").dataset.id = element.id;
         template.getElementById("edit").dataset.link = element.link;
+        
         template.getElementById("delete").dataset.value = element.id;
 
         let clone = document.importNode(template,true);

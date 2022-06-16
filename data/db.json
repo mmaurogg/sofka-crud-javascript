@@ -23,30 +23,11 @@
       "link": "https://cdn-icons-png.flaticon.com/512/86/86494.png"
     },
     {
-      "alias": "Black panter",
-      "name": "otro nombre",
-      "power": "poderes de pantera",
-      "link": "",
-      "id": 21
-    },
-    {
-      "alias": "galactus",
-      "name": "galactus",
-      "power": "comer planetas",
-      "id": 22
-    },
-    {
       "alias": "capitan america",
       "name": "royer",
       "power": "suero de supersoldado",
-      "link": "https://cdn-icons.flaticon.com/png/512/2234/premium/2234489.png?token=exp=1655344034~hmac=75da0426920ea3022736872a83437204",
+      "link": "https://cdn-icons.flaticon.com/png/512/2234/premium/2234489.png?token=exp=1655346045~hmac=b79d977633a27b04b74e661f123cb437",
       "id": 23
-    },
-    {
-      "alias": "Antorcha humana",
-      "name": "Billy",
-      "power": "Manipular fuego",
-      "id": 24
     },
     {
       "alias": "spiderman negro",
@@ -54,6 +35,13 @@
       "power": "simbiotico",
       "link": "",
       "id": 26
+    },
+    {
+      "alias": "Black panther",
+      "name": "Jon Doe",
+      "power": "poderes de pantera",
+      "link": "https://cdn-icons-png.flaticon.com/512/2526/2526899.png",
+      "id": 27
     }
   ],
   "DC": [
