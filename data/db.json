@@ -1,20 +1,18 @@
 {
   "marvel": [
     {
-      "id": 1,
       "alias": "Spiderman",
       "name": "Petter Parker",
       "power": "Aracnic powers",
-      "isAlive": true,
-      "link": "https://cdn-icons.flaticon.com/png/512/1090/premium/1090806.png?token=exp=1655183097~hmac=1af358f52acf68547d51b5a7ee6cabcf"
+      "link": "https://cdn-icons.flaticon.com/png/512/1090/premium/1090806.png?token=exp=1655344013~hmac=31f37f44f3eff3d9af7e17e633ffb396",
+      "id": 1
     },
     {
-      "id": 2,
       "alias": "Hulk",
       "name": "Bruce Banner",
       "power": "Hiper Strong",
-      "isAlive": true,
-      "link": "https://as2.ftcdn.net/v2/jpg/02/66/58/31/1000_F_266583146_oPl3TiJqFRC2i8YHZDII6526sM7jwN9b.jpg"
+      "link": "https://as2.ftcdn.net/v2/jpg/02/66/58/31/1000_F_266583146_oPl3TiJqFRC2i8YHZDII6526sM7jwN9b.jpg",
+      "id": 2
     },
     {
       "id": 3,
@@ -25,9 +23,10 @@
       "link": "https://cdn-icons-png.flaticon.com/512/86/86494.png"
     },
     {
-      "alias": "blac panter",
+      "alias": "Black panter",
       "name": "otro nombre",
       "power": "poderes de pantera",
+      "link": "",
       "id": 21
     },
     {
@@ -40,6 +39,7 @@
       "alias": "capitan america",
       "name": "royer",
       "power": "suero de supersoldado",
+      "link": "https://cdn-icons.flaticon.com/png/512/2234/premium/2234489.png?token=exp=1655344034~hmac=75da0426920ea3022736872a83437204",
       "id": 23
     },
     {
@@ -52,7 +52,7 @@
       "alias": "spiderman negro",
       "name": "parker",
       "power": "simbiotico",
-      "link": "on",
+      "link": "",
       "id": 26
     }
   ],

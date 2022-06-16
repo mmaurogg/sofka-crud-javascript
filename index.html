@@ -45,32 +45,18 @@
             
             <form id="crud-form" style="display: none">
                 <h2 id="crud-title">Agregar heroe</h2>
-                <input type="text" name="alias" placeholder="Super heroe"><br>
-
-                <input type="text" name="name" placeholder="Nombre" >
-                <br>
-                <input type="text" name="power" placeholder="Super poder" >
-                <br>
-                <br>
-                <label for="link">Link de la imagen</label> 
-                <input type="checkbox" name="link">
-                <br>
-                <br>
-                <label for="isAlive">¿Está vivo?</label> 
-                <input type="checkbox" name="isAlive">
-                <br>
-                <br>
-                <div>
-                    <input type="checkbox" name="marvel">
-                    <label for="marvel">Marvel</label>                    
+                <input class="m-3 w-75 form-control" type="text" name="alias" placeholder="Super heroe" required>
+                <input class="m-3 w-75 form-control" type="text" name="name" placeholder="Nombre" required>
+                <input class="m-3 w-75 form-control" type="text" name="power" placeholder="Super poder" required>
+                <input class="m-3 w-75 form-control" type="text" name="link" placeholder="Link imagen (opcional)">
+                <label class="m-3 w-75" for="isAlive"><input type="checkbox" name="isAlive">  ¿Está vivo?</label> 
+                
+                <div class= " m-3 row align-items-center">
+                    <label class="" for="marvel"><input type="checkbox" name="marvel">  Marvel</label>                    
+                    <label class="" for="DC"><input type="checkbox" name="DC">  DC</label>
                 </div>
-                <div>
-                    <input type="checkbox" name="DC">
-                    <label for="DC">DC</label>
-                </div>
-                <br>
 
-                <input type="submit" value="Crear"> 
+                <input class="m-3" type="submit" value="Listo"> 
                 <input type="hidden" name="id">
             </form>
 
@@ -84,7 +70,6 @@
 
         <article>
             <div id="search" style="display: none">
-
             </div>
         </article>
 

@@ -51,7 +51,7 @@ const deleteHero = async (id) => {
     
     let res = await fetch(`http://localhost:3000/marvel/${id}`, options);
     
-    if(!res.ok) throw { status: res.status, statusText: res.statusText};
+    if(!res.ok) throw new Error({ status: res.status, statusText: res.statusText});
     
     location.reload();
 
@@ -74,7 +74,7 @@ const setHero = async (hero) => {
     
     let res = await fetch(`http://localhost:3000/marvel`, options);
     
-    if(!res.ok) throw { status: res.status, statusText: res.statusText};
+    if(!res.ok) throw new Error({ status: res.status, statusText: res.statusText});
 
     location.reload();
 }
@@ -91,13 +91,14 @@ const updateHero = async (hero) => {
         body: JSON.stringify({
             alias: hero.alias.value,
             name: hero.name.value,
-            power: hero.power.value
+            power: hero.power.value,
+            link: hero.link.value
         })
     }
     
     let res = await fetch(`http://localhost:3000/marvel/${hero.id.value}`, options);
     
-    if(!res.ok) throw { status: res.status, statusText: res.statusText};
+    if(!res.ok) throw new Error({ status: res.status, statusText: res.statusText});
 
     location.reload();
 }
@@ -106,20 +107,11 @@ const updateHero = async (hero) => {
 
 const searchHeros = (search) => {
 
-    if (arrHeros.length === 0) {
-        getHeros()
-        .then(() => {
-            console.log(arrHeros);
-            filtrarHeroes(search);
-        })
-
-    } else {
-        filtrarHeroes(search);
-    }
+    filtrarHeroes(search);
 
     const cards = buildPage(herosFilter)
     console.log(cards);
-    document.getElementById("search").appendChild(cards);
+    document.getElementById("search").replaceChildren(cards);
     console.log(herosFilter);
 
 }
@@ -127,11 +119,9 @@ const searchHeros = (search) => {
 const filtrarHeroes = (search) => {
 
     herosFilter = [];
-
     search = search.toLocaleLowerCase();
 
     arrHeros.forEach(element => {
-
         const aliasLower = element.alias.toLocaleLowerCase();
         const nameLower = element.name.toLocaleLowerCase();
 
@@ -143,18 +133,21 @@ const filtrarHeroes = (search) => {
 
 let buildPage = (heros) => {
 
+    const unknownImage = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+
     heros.forEach(element => { 
         template.getElementById("alias").textContent = element.alias;
         template.getElementById("name").textContent = element.name;
         template.getElementById("power").textContent = element.power;
         template.getElementById("isAlive").textContent = "pendiente";
-        template.getElementById("link").src = element.link;
+        template.getElementById("link").src = element.link || unknownImage;
         
         template.getElementById("edit").dataset.alias = element.alias;
         template.getElementById("edit").dataset.name = element.name;
         template.getElementById("edit").dataset.power = element.power;
         template.getElementById("edit").dataset.isAlive = element.isAlive;
         template.getElementById("edit").dataset.id = element.id;
+        template.getElementById("edit").dataset.link = element.link;
         template.getElementById("delete").dataset.value = element.id;
 
         let clone = document.importNode(template,true);

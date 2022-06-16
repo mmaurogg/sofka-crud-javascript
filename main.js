@@ -3,6 +3,7 @@ import { getHeros, getHero, updateHero, deleteHero, setHero, searchHeros } from 
 const form = document.getElementById("crud-form");
 const title = document.getElementById("crud-title");
 const divHeros = document.getElementById("heros");
+const divSearch = document.getElementById("search");
 
 const searchHero = document.getElementById("input-search")
 
@@ -36,12 +37,8 @@ document.addEventListener("submit", (event) => {
 
 document.addEventListener("click", (event) => {
 
-    //generar estos como const para hacer validaciones
-    const heros = document.getElementById("cards");
-    const hero = document.getElementsByClassName("card");
-
-
     if (event.target.matches("#edit")) {
+
 
         title.textContent = "Editar Heroe";
         form.alias.value = event.target.dataset.alias;
@@ -49,6 +46,11 @@ document.addEventListener("click", (event) => {
         form.power.value = event.target.dataset.power;
         form.isAlive.value = event.target.dataset.isAlive;
         form.id.value = event.target.dataset.id;
+        form.link.value = event.target.dataset.link;
+
+        form.style.display = "inline";
+        divHeros.style.display = "none";
+        divSearch.style.display = "none";
     }
 
     if (event.target.matches("#delete")) {
@@ -65,23 +67,30 @@ document.addEventListener("click", (event) => {
     }
 
     if (event.target.matches("#navbar-home")) {
-        form.style.display = "none"
-        divHeros.style.display = "inline"
+        divHeros.style.display = "inline";
+        form.style.display = "none";
+        divSearch.style.display = "none";
     }
 
     if (event.target.matches("#navbar-add")) {
-        form.style.display = "inline"
-        divHeros.style.display = "none"
+        form.style.display = "inline";
+        divHeros.style.display = "none";
+        divSearch.style.display = "none";
     }
 
     if (event.target.matches("#btn-search")) {
-        console.log(searchHero.value)
+        divSearch.style.display = "inline";
+        form.style.display = "none";
+        divHeros.style.display = "none"
 
-        searchHeros(searchHero.value)
+        try {
+            searchHeros(searchHero.value)
+        } catch (error) {
+            let message = error.statusText || "Ocurrió un error al cargar";
+            form.insertAdjacentHTML("afterend", `<p><b>Error${error.status}: ${message}</b></p>`);
+        }
 
     }
-
-    
 
 })
 
