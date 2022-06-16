@@ -41,6 +41,19 @@
       "name": "royer",
       "power": "suero de supersoldado",
       "id": 23
+    },
+    {
+      "alias": "Antorcha humana",
+      "name": "Billy",
+      "power": "Manipular fuego",
+      "id": 24
+    },
+    {
+      "alias": "spiderman negro",
+      "name": "parker",
+      "power": "simbiotico",
+      "link": "on",
+      "id": 26
     }
   ],
   "DC": [

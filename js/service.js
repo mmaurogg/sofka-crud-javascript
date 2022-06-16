@@ -1,33 +1,21 @@
 const template = document.querySelector("#crud-template").content;
 const fragment = document.createDocumentFragment();
 
+let arrHeros = [];
+let herosFilter = [];
+
 const getHeros = () => {
     fetch("http://localhost:3000/marvel")
     .then((res) => {
         return (res.ok)?res.json():Promise.reject(res);
     })
     .then((json) => {
-        console.log(json);
+        arrHeros = json;
 
-        json.forEach(element => { 
-            template.getElementById("alias").textContent = element.alias;
-            template.getElementById("name").textContent = element.name;
-            template.getElementById("power").textContent = element.power;
-            //template.getElementById("isAlive").textContent = "pendiente";
-            template.getElementById("link").src = element.link;
-            
-            template.getElementById("edit").dataset.alias = element.alias;
-            template.getElementById("edit").dataset.name = element.name;
-            template.getElementById("edit").dataset.power = element.power;
-            template.getElementById("edit").dataset.isAlive = element.isAlive;
-            template.getElementById("edit").dataset.id = element.id;
-            template.getElementById("delete").dataset.value = element.id;
+        const cards = buildPage(json)
 
-            let clone = document.importNode(template,true);
-            fragment.append(clone);
-        });
+        document.getElementById("heros").appendChild(cards);
 
-        document.getElementById("heros").append(fragment);
     })
     .catch((error) => {
         let message = error.statusText || "Ocurrió un error al cargar";
@@ -43,19 +31,7 @@ const getHero = async (id)=> {
     })
     .then((json) =>{
 
-        json.forEach(element => { 
-
-            template.getElementById("alias").textContent = element.alias;
-            template.getElementById("name").textContent = element.name;
-            template.getElementById("power").textContent = element.power;
-            template.getElementById("isAlive").textContent = "pendiente";
-
-
-            let clone = document.importNode(template,true);
-            fragment.appendChild(clone);
-        });
-
-        document.getElementById("body-table").appendChild(fragment);
+        buildPage(json)
     })
     .catch((error) => {
         let message = error.statusText || "Ocurrió un error al cargar";
@@ -91,7 +67,8 @@ const setHero = async (hero) => {
         body: JSON.stringify({
             alias: hero.alias.value,
             name: hero.name.value,
-            power: hero.power.value
+            power: hero.power.value,
+            link: hero.link.value
         })
     }
     
@@ -104,7 +81,7 @@ const setHero = async (hero) => {
 
 
 //UpdatHero
-const updatHero = async (hero) => {
+const updateHero = async (hero) => {
 
     let options = {
         method: 'PUT',
@@ -125,4 +102,72 @@ const updatHero = async (hero) => {
     location.reload();
 }
 
-export {getHeros, getHero, updatHero, deleteHero, setHero};
+//_-------------
+
+const searchHeros = (search) => {
+
+    if (arrHeros.length === 0) {
+        getHeros()
+        .then(() => {
+            console.log(arrHeros);
+            filtrarHeroes(search);
+        })
+
+    } else {
+        filtrarHeroes(search);
+    }
+
+    const cards = buildPage(herosFilter)
+    console.log(cards);
+    document.getElementById("search").appendChild(cards);
+    console.log(herosFilter);
+
+}
+
+const filtrarHeroes = (search) => {
+
+    herosFilter = [];
+
+    search = search.toLocaleLowerCase();
+
+    arrHeros.forEach(element => {
+
+        const aliasLower = element.alias.toLocaleLowerCase();
+        const nameLower = element.name.toLocaleLowerCase();
+
+        if (aliasLower.indexOf(search) >= 0 || nameLower.indexOf(search) >= 0) {
+            herosFilter.push(element);
+        }
+    });
+}
+
+let buildPage = (heros) => {
+
+    heros.forEach(element => { 
+        template.getElementById("alias").textContent = element.alias;
+        template.getElementById("name").textContent = element.name;
+        template.getElementById("power").textContent = element.power;
+        template.getElementById("isAlive").textContent = "pendiente";
+        template.getElementById("link").src = element.link;
+        
+        template.getElementById("edit").dataset.alias = element.alias;
+        template.getElementById("edit").dataset.name = element.name;
+        template.getElementById("edit").dataset.power = element.power;
+        template.getElementById("edit").dataset.isAlive = element.isAlive;
+        template.getElementById("edit").dataset.id = element.id;
+        template.getElementById("delete").dataset.value = element.id;
+
+        let clone = document.importNode(template,true);
+        fragment.append(clone);
+    });
+
+    const cards = document.createElement("div");
+    cards.className = "row row-cols-1 row-cols-md-3 g-4";
+    cards.id = "cards";
+
+    cards.append(fragment);
+    
+    return cards;
+}
+
+export {getHeros, getHero, updateHero, deleteHero, setHero, searchHeros};

@@ -6,21 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crud Heroes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
     <script src="./main.js" type="module"></script>
 </head>
+
 <body>
 
-    <h1>Crud Heroes</h1>
     <section class="crud" id="">
+        
         <article>
-            <h2 id="crud-title">Agregar heroe</h2>
-            <form id="crud-form">
-
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a class="navbar-brand" href="#">CRUD Heroes</a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link" type="button" id="navbar-home" aria-current="page">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" type="button" id="navbar-add">Agregar Heroe</a>
+                      </li>
+                    </ul>
+                    <div class="d-flex" role="search">
+                      <input class="control me-2" id="input-search" type="search" placeholder="Buscar Heroe" aria-label="Search">
+                      <button class="btn btn-outline-primary" id="btn-search" type="button">Search</button>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+        </article>
+        
+        <article>
+            
+            <form id="crud-form" style="display: none">
+                <h2 id="crud-title">Agregar heroe</h2>
                 <input type="text" name="alias" placeholder="Super heroe"><br>
 
                 <input type="text" name="name" placeholder="Nombre" >
                 <br>
                 <input type="text" name="power" placeholder="Super poder" >
+                <br>
+                <br>
+                <label for="link">Link de la imagen</label> 
+                <input type="checkbox" name="link">
                 <br>
                 <br>
                 <label for="isAlive">¿Está vivo?</label> 
@@ -40,27 +73,21 @@
                 <input type="submit" value="Crear"> 
                 <input type="hidden" name="id">
             </form>
+
         </article>
-        
-        <br>
 
         <article>
-            <h2>Ver Super Heroes</h2>
-            <!-- <table id="crud-table">
-                <thead>
-                    <tr>
-                        <th>Alias</th>
-                        <th>Nombre</th>
-                        <th>Super Poder</th>
-                        <th>Estado</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="body-table"></tbody>
-            </table> -->
-
-            <div id="heros" class="row row-cols-1 row-cols-md-3 g-4"></div>
+            <div id="heros">
+                <h2>Super Heroes</h2>
+            </div>
         </article>
+
+        <article>
+            <div id="search" style="display: none">
+
+            </div>
+        </article>
+
     </section>
     
     <template id="crud-template">
@@ -69,8 +96,9 @@
             <div class="card-body">
             <img id="link" class="rounded float-end w-25">
             <h4 class="card-title" id="alias"></h4>
-            <p class="card-text" id="name"></p>
+            <p class="card-text"> Nombre: <span id="name"></span></p>
             <p class="card-text" id="power"></p>
+            <div id="isAlive"></div>
             <div class="row-2">
                 <a id="edit" class="btn btn-primary">Editar</a>
                 <a id="delete" class="btn btn-danger">Eliminar</a>
@@ -78,17 +106,6 @@
             </div>
         </div>
 
-
-        <!-- <tr>
-            <td id="alias"></td>
-            <td id="name"></td>
-            <td id="power"></td>
-            <td id="isAlive"></td>
-            <td>
-                <button id="edit">Editar</button>
-                <button id="delete">Eliminar</button>
-            </td>
-        </tr> -->
     </template>
 </body>
 </html>
