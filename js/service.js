@@ -4,6 +4,9 @@ const fragment = document.createDocumentFragment();
 let arrHeros = [];
 let herosFilter = [];
 
+/**
+ * Método para descargar y mostrar en la página la informacion de los heroes de la API
+ */
 const getHeros = () => {
     fetch("http://localhost:3000/marvel")
     .then((res) => {
@@ -23,7 +26,10 @@ const getHeros = () => {
     })
 }
 
-//getHero
+/**
+ * Método para descargar y mostrar en la página la informacion de un heroe de la API
+ * @param {*} id numero identificador id del heroe buscado
+ */
 const getHero = async (id)=> {
     await fetch(`http://localhost:3000/marvel/${id}`)
     .then((res) => {
@@ -40,7 +46,10 @@ const getHero = async (id)=> {
 }
 
 
-//deleteHero
+/**
+ * Método para borrar la un heroe de la API
+ * @param {*} id numero identificador id del heroe buscado
+ */
 const deleteHero = async (id) => {
     let options = {
         method: 'DELETE',
@@ -57,7 +66,10 @@ const deleteHero = async (id) => {
 
 }
 
-//setHero
+/**
+ * Método añadir un heroe nuevo a la API
+ * @param {*} hero información del heroe en formato json
+ */
 const setHero = async (hero) => {
     let options = {
         method: 'POST',
@@ -80,7 +92,10 @@ const setHero = async (hero) => {
 }
 
 
-//UpdatHero
+/**
+ * Método para actualziar el heroe en la API
+ * @param {*} hero información del heroe en formato json
+ */
 const updateHero = async (hero) => {
 
     let options = {
@@ -103,8 +118,10 @@ const updateHero = async (hero) => {
     location.reload();
 }
 
-//_-------------
-
+/**
+ * Método para buscar y mostrar en la página un heroe de la API
+ * @param {*} search palabra buscada en la información de heroes
+ */
 const searchHeros = (search) => {
 
     filtrarHeroes(search);
@@ -116,6 +133,10 @@ const searchHeros = (search) => {
 
 }
 
+/**
+ * Método para filtrar los heroes de la API y agregarlos en el array de herosFilter
+ * @param {*} search palabra buscada en la información de heroes
+ */
 const filtrarHeroes = (search) => {
 
     herosFilter = [];
@@ -131,6 +152,11 @@ const filtrarHeroes = (search) => {
     });
 }
 
+/**
+ * Método para construir los elementos html dle heroe para mostrar en la página
+ * @param {*} heros array compuesta por varios heroes
+ * @returns elementos html de heroes para ser agregados a un elemento en la página
+ */
 let buildPage = (heros) => {
 
     const unknownImage = "https://cdn-icons-png.flaticon.com/512/149/149071.png";

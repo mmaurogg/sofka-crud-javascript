@@ -7,8 +7,14 @@ const divSearch = document.getElementById("search");
 
 const searchHero = document.getElementById("input-search")
 
+/**
+ * Función inicializadora que muestra todos los heroes al cargar la página
+ */
 document.addEventListener("DOMContentLoaded", getHeros);
 
+/**
+ * Función para crear o actualizar un heroe segun si este ya tiene id o no
+ */
 document.addEventListener("submit", (event) => {
 
     if (event.target === form) {
@@ -35,11 +41,13 @@ document.addEventListener("submit", (event) => {
     }
 })
 
+/**
+ * Función para capturar los eventos del mause y reacionar si selecciona algun boton declarado
+ */
 document.addEventListener("click", (event) => {
 
     if (event.target.matches("#edit")) {
-
-
+        
         title.textContent = "Editar Heroe";
         form.alias.value = event.target.dataset.alias;
         form.name.value = event.target.dataset.name;
